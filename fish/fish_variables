@@ -1,0 +1,34 @@
+# This file contains fish universal variable definitions.
+# VERSION: 3.0
+SETUVAR __fish_initialized:3400
+SETUVAR fish_color_autosuggestion:brblack
+SETUVAR fish_color_cancel:\x2dr
+SETUVAR fish_color_command:blue
+SETUVAR fish_color_comment:red
+SETUVAR fish_color_cwd:purple
+SETUVAR fish_color_cwd_root:purple
+SETUVAR fish_color_end:purple
+SETUVAR fish_color_error:brpurple
+SETUVAR fish_color_escape:brcyan
+SETUVAR fish_color_history_current:\x2d\x2dbold
+SETUVAR fish_color_host:blue
+SETUVAR fish_color_host_remote:darkblue
+SETUVAR fish_color_normal:normal
+SETUVAR fish_color_operator:brcyan
+SETUVAR fish_color_param:purple
+SETUVAR fish_color_quote:yellow
+SETUVAR fish_color_redirection:purple\x1e\x2d\x2dbold
+SETUVAR fish_color_search_match:brpurple\x1e\x2d\x2dbackground\x3dbrblack
+SETUVAR fish_color_selection:white\x1e\x2d\x2dbold\x1e\x2d\x2dbackground\x3dbrblack
+SETUVAR fish_color_status:purple
+SETUVAR fish_color_user:brpurple
+SETUVAR fish_color_valid_path:purple
+SETUVAR fish_greeting:
+SETUVAR fish_key_bindings:fish_default_key_bindings
+SETUVAR fish_pager_color_completion:normal
+SETUVAR fish_pager_color_description:yellow\x1e\x2di
+SETUVAR fish_pager_color_prefix:normal\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
+SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
+SETUVAR fish_pager_color_selected_background:\x2dr
+SETUVAR fish_show_error_status:false
+SETUVAR fish_user_paths:/home/brsy/go/bin
