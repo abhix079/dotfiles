@@ -200,13 +200,14 @@ bindsym F1 exec --no-startup-id ~/.config/i3/scripts/keyhint-2
 # alternative
 # keybinding list in editor:
 # bindsym $mod+F1 exec --no-startup-id xed ~/.config/i3/keybindings
-# Backlight control
 
-#bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +10% && notify-send "Brightness - $(brightnessctl g)%"
-#bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -10 && notify-send "Brightness - $(xbacklight -get | cut -d '.' -f 1)%"
-# Backlight setting using dunst osc
-bindsym XF86MonBrightnessUp exec --no-startup-id ~/.config/i3/scripts/volume_brightness.sh brightness_up
-bindsym XF86MonBrightnessDown exec --no-startup-id ~/.config/i3/scripts/volume_brightness.sh brightness_down
+
+# Brightness Up
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5% && notify-send -r 9999 -i weather-clear -h int:value:$(( $(brightnessctl get) * 100 / $(brightnessctl max) )) "Brightness : $(( $(brightnessctl get) * 100 / $(brightnessctl max) ))%"
+
+# Brightness Down
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%- && notify-send -r 9999 -i weather-clear -h int:value:$(( $(brightnessctl get) * 100 / $(brightnessctl max) )) "Brightness : $(( $(brightnessctl get) * 100 / $(brightnessctl max) ))%"
+
 
 # change focus
 bindsym $mod+j focus left
@@ -265,20 +266,28 @@ bindsym $mod+Shift+n exec --no-startup-id ~/.config/i3/scripts/empty_workspace
 #bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse sset Master 5%+ && pkill -RTMIN+1 i3blocks
 #bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse sset Master 5%- && pkill -RTMIN+1 i3blocks
 # use meta keys showing osc using dunst
-bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.config/i3/scripts/volume_brightness.sh volume_up
-bindsym XF86AudioLowerVolume exec --no-startup-id ~/.config/i3/scripts/volume_brightness.sh volume_down
+#bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.config/i3/scripts/volume_brightness.sh volume_up
+#bindsym XF86AudioLowerVolume exec --no-startup-id ~/.config/i3/scripts/volume_brightness.sh volume_down
 
 # gradular volume control
-bindsym $mod+XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse sset Master 1%+ && pkill -RTMIN+1 i3blocks
-bindsym $mod+XF86AudioLowerVolume exec --no-startup-id amixer -D pulse sset Master 1%- && pkill -RTMIN+1 i3blocks
+#bindsym $mod+XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse sset Master 1%+ && pkill -RTMIN+1 i3blocks
+#bindsym $mod+XF86AudioLowerVolume exec --no-startup-id amixer -D pulse sset Master 1%- && pkill -RTMIN+1 i3blocks
+# Volume Up
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse sset Master 5%+ && notify-send -r 9998 -i audio-volume-high -h int:value:$(( $(amixer get Master | grep -o '[0-9]*%' | head -1 | tr -d '%') )) "Volume: $(( $(amixer get Master | grep -o '[0-9]*%' | head -1 | tr -d '%') ))%"
+
+# Volume Down
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse sset Master 5%- && notify-send -r 9998 -i audio-volume-low -h int:value:$(( $(amixer get Master | grep -o '[0-9]*%' | head -1 | tr -d '%') )) "Volume: $(( $(amixer get Master | grep -o '[0-9]*%' | head -1 | tr -d '%') ))%"
+
+# Mute Toggle
+bindsym XF86AudioMute exec --no-startup-id amixer set Master toggle && notify-send -r 9998 -i audio-volume-muted "Volume: $(amixer get Master | grep -o '\[on\]\|\[off\]' | head -1)"
 
 # mute
 #bindsym XF86AudioMute exec --no-startup-id amixer sset Master toggle && killall -USR1 i3blocks
 # use meta keys showing osc using dunst
-bindsym XF86AudioMute exec --no-startup-id ~/.config/i3/scripts/volume_brightness.sh volume_mute
+#bindsym XF86AudioMute exec --no-startup-id ~/.config/i3/scripts/volume_brightness.sh volume_mute
 
 # mic mute toggle
-bindsym XF86AudioMicMute exec amixer sset Capture toggle
+#bindsym XF86AudioMicMute exec amixer sset Capture toggle
 
 # audio control
 bindsym XF86AudioPlay exec --no-startup-id playerctl play
@@ -292,7 +301,7 @@ bindsym $mod+p exec --no-startup-id /usr/local/bin/switch-audio-port
 ## App shortcuts
 bindsym $mod+w exec --no-startup-id /usr/bin/chrome
 bindsym $mod+n exec --no-startup-id /usr/bin/thunar
-bindsym Print exec --no-startup-id scrot ~/%Y-%m-%d-%T-screenshot.png && notify-send "Screenshot saved to ~/$(date +"%Y-%m-%d-%T")-screenshot.png"
+bindsym Print exec --no-startup-id scrot ~/Pictures/Screenshot/%Y-%m-%d-%T-screenshot.png && notify-send "Screenshot saved to ~/Pictures/Screenshot/$(date +"%Y-%m-%d-%T")-screenshot.png"
 
 # Power Profiles menu switcher (rofi)
 bindsym $mod+Shift+p exec --no-startup-id ~/.config/i3/scripts/power-profiles
@@ -325,17 +334,17 @@ set $ws10 "10"
 
 # bind program to workspace and focus to them on startup:
 assign [class="kitty"] $ws1
-assign [class="(?i)chrome"] $ws2
+assign [class="(?i)Chrome"] $ws2
 assign [class="Thunar"] $ws3
 assign [class="Code"] $ws4
-assign [class="Discord"] $ws5
+#assign [class="mongodb-compass"] $ws5
 
 # automatic set focus new window if it opens on another workspace than the current:
 for_window [class=kitty] focus
-for_window [class=(?i)chrome] focus
+for_window [class=(?i)Chrome] focus
 for_window [class=Thunar] focus
 for_window [class=Code] focus
-for_window [class=Discorb] focus
+#for_window [class=mongodb-compass] focus
 
 ##############
 # compositor #
