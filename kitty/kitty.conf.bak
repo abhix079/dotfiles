@@ -1,7 +1,7 @@
 # vim:fileencoding=utf-8:foldmethod=marker
 
 # BEGIN_KITTY_THEME
-# Adapta Nokto Maia
+# Constant Perceptual Luminosity (dark)
 include current-theme.conf
 # END_KITTY_THEME
 
@@ -2670,14 +2670,9 @@ bold_font        auto
 italic_font      auto
 bold_italic_font auto
 
-font_size 11
+font_size 12
 
 disable_ligatures never
-
-# Curso
-cursor_trail 1
-cursor_trail_decay 0.1 0.4
-cursor_trail_start_threshold 2
 
 
 # Cursor customization
@@ -2735,5 +2730,5 @@ include keybinds.conf
 include tab_bar.conf
 
 # Background
-background_opacity 0.9
+background_opacity 1.0
 background_tint 0.5
