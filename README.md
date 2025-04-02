@@ -13,7 +13,7 @@ bind = $mainMod, PRINT,exex ,hyprshot -m region -o ~/Pictures/
 #Screenshot a WINDOW
 bind = ,PRINT,exec ,hyprshot -m output -o ~/Pictures/
 ```
-Note: Make sure that you have installed the hyprhsot before using this configuration
+Note: Make sure that you have installed the hyprshot before using this configuration
 #### Install hyprshot
 ``` bash
 yay -S hyprshot
