@@ -14,6 +14,11 @@ bind = $mainMod, PRINT,exex ,hyprshot -m region -o ~/Pictures/
 bind = ,PRINT,exec ,hyprshot -m output -o ~/Pictures/
 ```
 Note: Make sure that you have installed the hyprhsot before using this configuration
+#### Install hyprshot
+``` bash
+yay -S hyprshot
+```
+
 
 
 
