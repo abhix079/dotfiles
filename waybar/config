@@ -1,0 +1,60 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 17,
+  "modules-left": ["custom/wifi","custom/sep","memory","custom/sep","disk"],
+  "modules-center": ["clock"],
+  "modules-right": ["custom/spotify","custom/sep","backlight","custom/sep", "pulseaudio","custom/sep", "battery"],
+  
+  "clock": {
+    "format": "{:%H:%M:%S}",
+    "tooltip-format": "{:%A, %B %d, %Y}",
+"interval":1
+  },
+
+"custom/sep":{
+"format":"|",
+"tooltip":false
+},
+
+ "battery": {
+    "format": "  {capacity}%",
+    "format-charging": " {capacity}%",
+    "tooltip": true,
+"interval":1
+  },
+
+ "pulseaudio": {
+    "format": "  {volume}%",
+    "format-muted": "",
+    "scroll-step": 2
+  },
+  
+  "memory": {
+    "format": " {used:0.1f}G",
+    "tooltip": true,
+"interval":1
+  },
+
+  "disk": {
+    "format": " {percentage_used}%",
+    "path": "/"
+  },
+
+ "backlight": {
+    "format": " {percent}%",
+    "device": "intel_backlight"
+  },
+"custom/wifi": {
+  "exec": "~/.config/waybar/scripts/wifi.sh",
+  "interval": 1,
+  "return-type": "json",
+  "tooltip": true,
+  "format": "{}"
+},
+"custom/spotify": {
+    "exec": "playerctl -p spotify metadata --format '{{artist}} - {{title}}' | sed 's/^/ /'",
+    "interval": 3
+  },
+}
+
