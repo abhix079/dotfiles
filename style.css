@@ -1,0 +1,147 @@
+/* macOS-like Waybar Style - GTK Compatible */
+* {
+  font-family: "JetBrainsMono Nerd Font", sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+window#waybar {
+  background: rgba(40, 44, 52, 0.7);
+  color: #e6e6e6;
+  min-height: 22px;
+  padding: 0 8px;
+  /* cursor: pointer; */
+}
+
+/* Center clock */
+#clock {
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 500;
+  
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.06));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0px 8px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  min-width: 60px;
+}
+
+#clock:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.08));
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* ===== Left Side ===== */
+#custom-arch {
+  color: #1793d1;
+  padding: 0px 5px;
+  margin: 0 2px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 15px;
+  transition: all 0.3s ease;
+}
+
+/* Workspaces */
+#workspaces {
+  padding: 0 2px;
+}
+
+#workspaces button {
+  padding: 0px 5px;
+  margin: 0 1px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.04));
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  color: #888;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  font-size: 9px;
+  min-width: 16px;
+  font-weight: 500;
+}
+
+#workspaces button.active {
+  background: linear-gradient(135deg, rgba(100, 210, 255, 0.25), rgba(100, 210, 255, 0.15));
+  border: 1px solid rgba(100, 210, 255, 0.3);
+  color: #64d2ff;
+  font-weight: 600;
+}
+
+#workspaces button:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.08));
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+}
+
+#workspaces button.urgent {
+  background: linear-gradient(135deg, rgba(255, 69, 58, 0.25), rgba(255, 69, 58, 0.15));
+  border: 1px solid rgba(255, 69, 58, 0.3);
+  color: #ff453a;
+  animation: urgent-pulse 1.5s infinite;
+}
+
+/* ===== Compact Modules (Unified Style) ===== */
+#memory, #cpu, #disk, #custom-spotify,
+#network, #custom-netspeed, #backlight,
+#pulseaudio, #battery {
+  padding: 0px 5px;
+  margin: 0 2px;
+  border-radius: 6px;
+  font-size: 11.5px;
+  transition: background 0.3s ease;
+}
+
+/* Individual colors */
+#memory { color: #bf5af2; background: rgba(191, 90, 242, 0.1); }
+#memory:hover { background: rgba(191, 90, 242, 0.25); }
+
+#cpu { color: #ff9f0a; background: rgba(255, 159, 10, 0.1); }
+#cpu:hover { background: rgba(255, 159, 10, 0.25); }
+
+#disk { color: #5ac8fa; background: rgba(90, 200, 250, 0.1); }
+#disk:hover { background: rgba(90, 200, 250, 0.25); }
+
+#custom-spotify { color: #1ed760; background: rgba(30, 215, 96, 0.1); }
+#custom-spotify:hover { background: rgba(30, 215, 96, 0.25); }
+
+#network { color: #64d2ff; background: rgba(100, 210, 255, 0.1); }
+#network:hover { background: rgba(100, 210, 255, 0.25); }
+
+#custom-netspeed { color: #af52de; background: rgba(175, 82, 222, 0.1); font-size: 11.6px; }
+#custom-netspeed:hover { background: rgba(175, 82, 222, 0.25); }
+
+#backlight { color: #ffd93d; background: rgba(255, 217, 61, 0.1); }
+#backlight:hover { background: rgba(255, 217, 61, 0.25); }
+
+#pulseaudio { color: #6bcf7f; background: rgba(107, 207, 127, 0.1); }
+#pulseaudio:hover { background: rgba(107, 207, 127, 0.25); }
+#pulseaudio.muted { color: #ff453a; background: rgba(255, 69, 58, 0.1); }
+
+#battery { color: #32d74b; background: rgba(50, 215, 75, 0.1); }
+#battery:hover { background: rgba(50, 215, 75, 0.25); }
+#battery.charging { color: #ffcc02; background: rgba(255, 204, 2, 0.1); }
+#battery.warning { color: #ff9f0a; background: rgba(255, 159, 10, 0.15); animation: pulse 1s infinite; }
+#battery.critical { color: #ff453a; background: rgba(255, 69, 58, 0.2); animation: pulse 1s infinite; }
+
+/* Separators */
+#custom-sep {
+  color: rgba(255, 255, 255, 0.15);
+  padding: 0 1px;
+  font-size: 8px;
+  font-weight: 300;
+}
+
+/* Animations */
+@keyframes pulse {
+  from { opacity: 1; }
+  to { opacity: 0.6; }
+}
+
+@keyframes urgent-pulse {
+  from { opacity: 1; border-color: rgba(255, 69, 58, 0.3); }
+  to { opacity: 0.7; border-color: rgba(255, 69, 58, 0.6); }
+}

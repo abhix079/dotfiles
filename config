@@ -1,0 +1,139 @@
+
+{
+  "layer": "top",
+  "position": "top",
+  "height": 10,
+  "spacing": 1,
+
+  "modules-left": [
+    "custom/arch",
+    "custom/sep",
+    "cpu",
+    "custom/sep",
+    "network",
+    "custom/sep",
+    "hyprland/workspaces",
+    "custom/sep",
+    "custom/netspeed"
+  ],
+
+  "modules-center": [
+    "clock"
+  ],
+
+  "modules-right": [
+    "custom/spotify",
+    "custom/sep",
+    "backlight",
+    "custom/sep",
+    "pulseaudio",
+    "custom/sep",
+    "battery"
+  ],
+
+  "clock": {
+    "format": "{:%H:%M:%S}",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "interval": 1
+  },
+
+  "custom/sep": {
+    "format": "│",
+    "tooltip": false
+  },
+
+  "custom/arch": {
+    "format": "",   // Arch logo
+    "tooltip": true,
+    "tooltip-format": "Arch Linux - Click to open terminal",
+    "on-click": "kitty"
+  },
+
+  "hyprland/workspaces": {
+    "format": "{name}",
+    "format-icons": {
+      "1": "1",
+      "2": "2", 
+      "3": "3",
+      "4": "4",
+      "5": "5",
+      "6": "6",
+      "7": "7",
+      "8": "8",
+      "9": "9",
+      "10": "10"
+    },
+    "persistent-workspaces": {
+      "*": 5
+    },
+    "on-click": "activate",
+    "sort-by-number": true
+  },
+
+  "cpu": {
+    "format": "   {usage}%",
+    "interval": 1,
+    "tooltip": true,
+    "tooltip-format": "CPU Usage: {usage}%\nLoad: {load}",
+    "on-click": "kitty -e htop"
+  },
+
+  "custom/spotify": {
+    "exec": "echo '   '$(playerctl -p spotify metadata --format '{{title}} -- {{artist}}' || echo 'Spotify')",
+    "interval": 3,
+    "max-length": 40,
+    "tooltip": true,
+    "tooltip-format": "Spotify - Click to toggle play/pause",
+    "on-click": "playerctl -p spotify play-pause"
+  },
+
+  "network": {
+    "format-wifi": "   {essid}",
+    "format-ethernet": "󰈀  {ifname}",
+    "format-disconnected": "󰖪 Disconnected",
+    "tooltip-format": "{ifname} via {gwaddr}\nSignal: {signalStrength}%\nIP: {ipaddr}",
+    "interval": 1,
+    "on-click": "nm-connection-editor"
+  },
+
+  "backlight": {
+    "format": "   {percent}%",
+    "device": "intel_backlight",
+    "on-scroll-up": "brightnessctl set 5%+",
+    "on-scroll-down": "brightnessctl set 5%-",
+    "tooltip": true,
+    "tooltip-format": "Brightness: {percent}%"
+   
+  },
+
+  "pulseaudio": {
+    "format": "   {volume}%",
+    "format-muted": "  Muted",
+    "on-click": "pavucontrol",
+    "on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+    "scroll-step": 2,
+    "tooltip": true,
+    "tooltip-format": "Volume: {volume}%\nClick: PulseAudio Control\nRight-click: Mute toggle"
+  },
+
+  "battery": {
+    "format": "   {capacity}%",
+    "format-charging": "⚡ {capacity}%",
+    "format-plugged": "   {capacity}%",
+    "states": {
+      "warning": 30,
+      "critical": 15
+    },
+    "interval": 1,
+    "tooltip": true,
+    "tooltip-format": "Battery: {capacity}%\nTime: {time}\nPower: {power:.1f}W"
+  },
+
+  "custom/netspeed": {
+    "exec": "~/.config/waybar/scripts/netspeed.sh",
+    "interval": 1,
+    "tooltip": false,
+    "format": "{text}"
+}
+
+}
