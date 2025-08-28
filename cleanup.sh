@@ -2,20 +2,20 @@
 
 echo "🔄 Starting deep system cleanup and optimization for Arch + Hyprland..."
 
-# 🧠 Free up RAM
+
 echo "🧠 Cleaning RAM..."
 sudo sync
 echo 3 | sudo tee /proc/sys/vm/drop_caches > /dev/null
 sudo sysctl -w vm.drop_caches=3 > /dev/null
 echo "✅ RAM caches dropped."
 
-# 🧹 Remove orphaned packages and cache
+
 echo "📦 Removing orphaned packages and old package cache..."
 sudo pacman -Rns $(pacman -Qdtq) --noconfirm 2>/dev/null
 sudo paccache -rk1
 echo "✅ Package cleanup done."
 
-# 🗑️ Clean caches and temporary files
+
 echo "🗑️ Cleaning user & system caches..."
 rm -rf ~/.cache/*
 rm -rf ~/.config/*/*Cache*
