@@ -22,7 +22,7 @@
   ],
 
   "modules-right": [
-    "custom/spotify",
+   // "custom/spotify",
     "custom/sep",
     "backlight",
     "custom/sep",
