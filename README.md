@@ -18,6 +18,11 @@ Note: Make sure that you have installed the hyprshot before using this configura
 ``` bash
 yay -S hyprshot
 ```
+###Gestures command for Hyprland 0.53.0 (Wayland)
+```bash
+gesture= 3, horizontal, workspace, next
+```
+
 
 
 
